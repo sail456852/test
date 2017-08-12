@@ -1,0 +1,11 @@
+<c3p0-config>
+	<!-- Default Configuration. if not assigned this one used-->
+	<default-config>
+		<!-- Basic COnfiguration for Day10 -->
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/day10</property>
+		<property name="user">root</property>
+		<property name="password">200909</property>
+	
+	</default-config> 
+</c3p0-config> 

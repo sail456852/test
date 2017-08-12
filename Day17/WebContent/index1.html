@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 
+	1.注册案例
+		需求:有一个注册页面,当用输入注册信息之后,点击注册按钮, 就将用户输入的内容,保存到数据库
+		
+		request对象 :  对请求部分封装 class org.apache.catalina.connector.RequestFacade
+			请求行:
+				格式: 请求方式   请求的资源  协议/版本
+				
+				扩展:
+					IPV4 : 192.168.43.110
+					IPV6 : 0:0:0:0:0:0:0:1
+				
+				重要的API:
+					String getMethod();  获取请求方式
+					String getContextPath(); 获取工程路径
+					String getRemoteAddr(); 获取访问者的IP地址.	
+											 数据分析: 统计哪些地方乡亲使用我这个网站
+											 访问者过滤: 
+				了解的API:
+					String getRequestURI(); 获取请求的URI
+					String getProtocol()   获取协议版本
+				
+			请求头:
+				格式: key value /value有可能有多个
+				
+				重要的API:
+					String getHeader(String name)
+					
+				了解的API:
+					getIntHeader(name)
+					getDateHeader(name)
+					getHeaders(name)
+					
+				常用的请求头:
+					user-agent: 获取用户浏览器版本信息
+					referer   : 连接从哪个页面跳转过来的, 防盗链
+				
+			请求体:
+				格式: username=zhangsan&password=123&hobby=smoking&hobby=hirehead
+				
+				String getParameter(name) : 获取指定名称的参数,返回的是一个
+				String[] getParameterValues(name) : 获取指定名称的所有参数
+				Map String,String[]    getParameterMap();
+				
+				中文乱码问题: 所有中文乱码问题 : 编码和解码不一致
+					get方式: 参数在请求行中, 所以 必须使用  new String(乱码.getBytes("ISO-8859-1"),"UTF-8");
+					post方式: 参数在请求体中, request.setCharacterEncoding("UTF-8");
+				
+		response对象: 对响应部分的封装
+	2.完善登录案例
+		需求: 当用输入用户名和密码,如果找不到对应的用户信息, 就将这个错误信息显示在登录页面上
+		
+		jsp: java server page 本质上就是一个Servlet	
+			 特征:
+			 	以jsp结尾
+			 	jsp实际上是页面展示和响应生成的内容,进行分离的
+			
+		
+		请求转发:
+			RequestDispatcher 对象 
+				forward(request,response)
+				
+				
+ 		请求转发和请求重定向的区别:
+ 			1.转发只发送一次请求,地址栏不会发生变化
+ 			2.重定向发送两次请求,地址栏会发生变化
+ 			3.转发是由request, 重定向 response.sendRedierct
+ 			4.转发可以携带属性,  重定向不可以
+ 			5.转发使用的服务器内部路径, 重定向需要写绝对路径,可以跳转去任意资源
+ 			
+ 		如何选择:	
+ 			1.跳转连接,是否需要携带数据
+ 				要带数据,用转发
+ 				不带带数据, 可以用转发,也可以用重定向
+ 		三元运算符: 条件判断?条件成立:条件不成立	
+ 		
+ 		
+ 		请求转发和请求重定向 ,向页面输出,三则不能出现在同一个逻辑
+ 		
+ 		xxxAttribute
+ 			
+	 		ServletContext
+	 			创建: 服务器启动
+	 			销毁: 服务器正常关闭,
+	 			作用范围: 整个项目	
+	 		request
+	 			创建: 请求到达服务器的时候
+	 			销毁: 响应生成的时候
+	 			作用范围: 当前请求,一次请求
+ 			 -->
+	
+	<!--
+		form for LineServlet
+	-->
+	
+	
+	
+	<H1> 
+	 Form for Servlet
+	</h1>
+	
+	<div>
+		<form action="/Day17/LoginServit" method="post">
+			用户名:<input type="text" name="username"> <br/>
+			密码:<input type="password" name="password"> <br/>
+			
+			兴趣爱好:
+				<input type="checkbox" name="hobby" value="smoking">抽烟 
+			 	<input type="checkbox" name="hobby" value="drinking">喝酒
+			 	<input type="checkbox" name="hobby" value="hirehead">烫头
+			<input type="submit" value="提交"/>
+		</form>
+	</div>
+	
+</body>
+</html>

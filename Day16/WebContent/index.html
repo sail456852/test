@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	Access the refresh function 
+	<a href= "/Day16/HeadServlet" > Click here to refresh   </a> 
+	<br/>
+	
+	Link to DownloadServlet 
+	<!-- Directly access the Download Servlet \
+	won't give the servlet the data your submited -->
+	<br>
+	Please input the filename you wanna download in
+	the first box!
+	<form action="/Day16/DownloadServlet" method="get">
+	<input type="inputbox" name="name" value="2.jpg">
+	<input type="inputbox" name="password" value="lll">
+	<input type="submit" value="Click me biatch!">
+	</form>
+		
+	<br>
+	<a href=/Day16/DownloadServlet?name='2.png' > download 2.png</a>
+	
+</body>
+</html>
